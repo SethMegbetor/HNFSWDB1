@@ -1,0 +1,643 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>NODE HUB, HO</title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="c1b20ed9-7aa4-4cd0-b73f-5e078e5ebd5d" class="page serif"><header><h1 class="page-title">NODE HUB, HO</h1></header><div class="page-body"><h1 id="09d32f6a-80e2-4df7-b0e7-5b96f7306efd" class="">1. INTRODUCTION</h1><h2 id="d9fab2b4-57a8-4cd4-b90a-890d250169e6" class="">HOW TO GET THE MOST OUT OF THIS TRAINING</h2><ol id="9a78655c-f5c1-4858-a5ae-b02c1c682e40" class="numbered-list" start="1"><li>don&#x27;t try to code along, rather try to understand the code.</li></ol><ol id="e43a3544-b8eb-4f99-8d39-13997e503d2b" class="numbered-list" start="2"><li>Now try to type out your code to replicate the code.</li></ol><ol id="4a33c0b0-6557-4aca-90e9-2539e0bfc202" class="numbered-list" start="3"><li>Take notes for yourself to come back to and review in the future</li></ol><ol id="f47262dc-454f-4c0d-946a-3ff8261443c8" class="numbered-list" start="4"><li>Don&#x27;t skip any lesson. Be consistent</li></ol><ol id="74ba4ab9-0992-4c9c-8aa3-c9d6d5bccf2b" class="numbered-list" start="5"><li>Practice and try and try again</li></ol><ol id="dc3073c8-38bc-4a13-8b5d-f92f22369301" class="numbered-list" start="6"><li>You&#x27;ll get stuck (almost all the time). Google and stackoverflow. You are not the first person experiencing that problem</li></ol><ol id="85a2990c-48a2-48b5-9a80-6dd1549aa606" class="numbered-list" start="7"><li>Struggle is good, that&#x27;s how you improve and level up your skills</li></ol><ol id="0eae7276-dafd-42ea-a630-0640cfaae562" class="numbered-list" start="8"><li>Read the 12 rules to learn to code e-book</li></ol><p id="b485f7b1-c574-40e5-9501-a374faad5f80" class="">
+</p><h1 id="fca9f98d-415c-4e50-b18a-a43eb0861a57" class="">HOW DOES THE INTERNET WORKS</h1><p id="92f9c36a-3252-43e1-8a81-47d6d506ba2c" class="">Lot of people think of the internet as something hanging in the cloud, super complex and difficult to understand. NO!</p><p id="fdcc2aed-dc0c-4e29-b2ac-3d09ffc4aed8" class="">It&#x27;s just a long piece of wire that connects different computers to each other to communicate and transfer data.</p><p id="96597357-167b-4cb3-9b90-677952ec4a08" class="">Some of this computers have a special job: to be online 24/7 ready to serve you all of the data and files that you are requesting when you try accessing websites and they are called <span style="border-bottom:0.05em solid"><mark class="highlight-red"><strong>SERVERS</strong></mark></span></p><p id="5b3b890c-6958-4093-bd1a-4ecd900a1b98" class="">Any computer that you use to access the internet is called a <strong><mark class="highlight-red">CLIENT</mark></strong></p><p id="23ab036e-178b-4a10-a8a3-9419b26e51cc" class="">A <mark class="highlight-red"><strong>web server</strong></mark> is like a giant library opened 24/7 that you can go in at any time of the day and request any web page or information and it will be able to serve you with all of the files and data that you will need to be able to view whatever website it is that you requested.</p><p id="db914a6b-395f-4418-aa61-d017fe92bf66" class=""><mark class="highlight-red"><strong>How do you quickly locate the things you want in this library?</strong></mark></p><p id="cfe7c55b-2260-47c3-ab72-edb7ff85a6f8" class="">When you search for a homepage on your computer <mark class="highlight-red"><strong>(client) the browser</strong></mark> sends a message to your <strong><mark class="highlight-red">Internet Service Provider</mark></strong> (ISP), the ISP then sends it to a <strong><mark class="highlight-red">DNS (Domain Name System)</mark></strong> server will search it&#x27;s database for the exact ip address of the website you are trying to access. And once the dns server finds that address, it sends it back to your browser.</p><p id="567c2feb-5fe4-4eb8-9702-78ae5476f601" class="">And now you can send a direct request to that address through your isp.  And this message will be delivered via what&#x27;s called the <mark class="highlight-red"><strong>internet backbone.</strong></mark> which is literally the backbone of internet.</p><p id="e53ac2a9-503e-4265-bfd2-b4214a06d97a" class=""><mark class="highlight-red"><strong>Internet backbone</strong></mark> is a very high-speed data transmission line that provides networking facilities to relatively small but high-speed Internet service providers all around the world. The largest and fastest networks are linked together with fiber-optic connections and high-performance routers.</p><p id="5396d79f-41a5-42bf-a7e4-1b51c7970f71" class=""><mark class="highlight-red"><strong>the dns server</strong></mark> is basically like a phonebook that matches domain names with their unique ip addresses.</p><p id="974c1415-af1c-423b-b10f-fa84dce51e5f" class="">Every computer that is connected to the internet has an <strong><mark class="highlight-red">ip address</mark></strong> which is a like a unique postal address for your computer for sending and receiving files.</p><p id="957d5b18-29ae-4f76-8ebc-9b8e9145a24b" class="">
+</p><p id="04925a55-f65b-48b1-964a-8779622e5902" class="">(To find the direct address) client → ISP → DNS → ISP → client</p><p id="9c2f72ea-8704-4fd3-8e07-081ffa2165a1" class="">(Direct request to the address) client → ISP → internet backbone → Server → internet backbone → ISP → client </p><p id="7a87cba5-75e5-49b1-8b03-ae9d1f5a0395" class="">
+</p><h1 id="7d6323ad-2b2c-4876-ad4e-6b0e0f8fd9e6" class=""><strong>HOW DO WEBSITES WORK?</strong></h1><p id="20cfba9a-1033-4b24-b098-18c642804c8d" class="">In order to access a web page you need a web browser. these are softwares that allow you look up the ip address of your website and  to be able to receive data that it then renders it into the website you see. The data that the browser receives usually consists of 3 types of files. HTML, CSS and JAVASCRIPT. </p><p id="f3a13f27-2e71-42db-9507-d063ef890da8" class=""><strong>The 3 building blocks of the web</strong></p><ol id="9aa66b3c-c860-467a-9ce0-909e4264634b" class="numbered-list" start="1"><li><mark class="highlight-red">html</mark> : responsible for the structure of your website. Imagine your website as a house, html would be the builder who would come and build the walls. <p id="12adf0a4-822f-468e-958e-f1a8fda181b9" class="">e.g. Image, button, textbox etc</p></li></ol><ol id="d44fb9b0-0916-49b2-96c9-c2c4c6bba047" class="numbered-list" start="2"><li><mark class="highlight-red">css</mark> : responsible for styling your website. Used to modify the appearance<p id="cb36887a-0c14-4869-a0e8-a61f85ae6534" class="">The painters and decorators adding stylistic flourishes to your house making it look the way you want it to.</p><p id="dee86697-7db8-4256-a61a-2fb2073532d3" class="">eg. the button you got from your html, you want the color to be green, you want the font to be a certain size. 
+All these are done using css code.</p></li></ol><ol id="eaa079a8-e4a7-41d1-a8e8-572bd4b58f7d" class="numbered-list" start="3"><li><mark class="highlight-red">javascript</mark> : adds functionality to your site. Allows it do things and have behaviour rather than just display images and text to us.
+
+Like the electrician that comes in and connects the wires so that the light bulb switches on or somebody who comes in and does the plumbing so that the toilet can actually flush.
+And javascript does that.</li></ol><p id="6d3f42ad-3f72-4441-a433-bedfead93631" class="">
+</p><p id="5def162e-736f-4314-8864-59fb17d82d62" class=""><mark class="highlight-red"><strong>Exercise:</strong></mark> 
+Go to any website of your choice, right click and select inspect. Now, use the developer tools of your browser to edit the content of the page.
+Awesome right ?</p><p id="c3d15426-8dbc-4c2d-8265-45918c1e0402" class="">
+</p><h3 id="aa9a8a77-d43a-4f0f-adc1-6c1815c43d9d" class="">WHAT YOU NEED TO GET STARTED.</h3><ol id="766a0252-d586-4c42-9a90-7c18655fb23d" class="numbered-list" start="1"><li><a href="https://www.google.co.uk/chrome/">Google chrome</a> or any browser of your choice</li></ol><ol id="20793795-2a18-4c4d-a06b-46b56da590ef" class="numbered-list" start="2"><li><a href="https://code.visualstudio.com/">VS Code</a></li></ol><ol id="d49d8310-f5ac-4e93-82e3-ac2c05a845a5" class="numbered-list" start="3"><li><a href="https://git-scm.com/downloads">Git Bash</a></li></ol><ol id="c5a56162-449a-4611-aa88-7bee4124760f" class="numbered-list" start="4"><li><a href="https://github.com/login">Git hub account</a></li></ol><p id="2ad16e08-f949-495b-8922-9c138536a970" class="">
+</p><h2 id="9f5f9fef-f25c-4b00-be1f-97dfd23689c3" class=""><strong>VS Code Extensions</strong></h2><h3 id="c8e859c9-a42f-4442-8508-c110b0f5dc45" class="">RECOMMENDED</h3><ol id="abfd71a8-7cf0-45ff-8e35-b4f3a572dd95" class="numbered-list" start="1"><li>esbenp.prettier-vscode</li></ol><ol id="13f6ec9c-a692-4d04-84e0-3afd0d7961be" class="numbered-list" start="2"><li>formulahendry.auto-close-tag</li></ol><ol id="5e94651f-eee6-443b-a9c1-a61ccc9dba33" class="numbered-list" start="3"><li>hex-ci.stylelint-plus</li></ol><ol id="f25609bb-9d16-40a3-bc5d-10de7fcb2f4c" class="numbered-list" start="4"><li>dbaeumer.vscode-eslint</li></ol><ol id="b67d1855-51a3-4d4a-998e-7d7b03f71228" class="numbered-list" start="5"><li>naumovs.color-highlight</li></ol><ol id="873240fc-5b0d-4c99-b7f0-e2074b22e807" class="numbered-list" start="6"><li>DigitalBrainstem.javascript-ejs-support</li></ol><h3 id="99547a02-a86e-4778-a4e8-2eab4af206f5" class="">OPTIONAL</h3><ol id="e2a3ce70-8dfa-4db4-b264-0e8d10290731" class="numbered-list" start="1"><li>ritwickdey.LiveServer</li></ol><ol id="34e8888c-db62-4b02-954f-421524173fb7" class="numbered-list" start="2"><li>erikphansen.vscode-toggle-column-selection</li></ol><ol id="a90c7455-0ec8-447d-b55c-a33b57dece29" class="numbered-list" start="3"><li>file-icons</li></ol><p id="2fcfd287-5a39-4c4c-b80e-42a5330e1281" class="">
+</p><h3 id="7b195ef1-5e5f-4770-a674-277fb6cd3836" class="">HOW TO GET HELP WHEN YOU&#x27;RE STUCK</h3><ol id="fb70aed3-4112-4401-9f2f-15ad5bed25ae" class="numbered-list" start="1"><li>Expectation vs reality
+figure out what did you expect your code to do and what actually happened?
+then figure out what is causing the difference.</li></ol><ol id="3de3ce78-03fa-43d2-aeff-db6f04988543" class="numbered-list" start="2"><li>Read and understand the error message. Or search for it via google.</li></ol><ol id="c266f460-ec9a-4700-9132-b8e870360f1d" class="numbered-list" start="3"><li>Might be time to take a break</li></ol><ol id="ac7cd844-9295-4185-b31f-2960efc867fe" class="numbered-list" start="4"><li>Go back to where you were before your code broke</li></ol><ol id="ca7053d5-6388-4471-ac73-1734930b3308" class="numbered-list" start="5"><li>Ask for help from a senior developer</li></ol><ol id="175734d0-07b8-414d-b7c9-6ad8f6299be4" class="numbered-list" start="6"><li>Repeat</li></ol><p id="d58c25c4-cf8d-4616-900d-3f165043e3a7" class="">
+</p></div></article></body></html>
